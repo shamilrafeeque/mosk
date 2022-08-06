@@ -1,0 +1,79 @@
+{% extends 'adminpanel/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+   <!-- Page Heading -->
+   <h1 class="h3 mb-2 text-gray-800">Order Table</h1>
+   <p class="mb-4">Orders and its details</p>
+   
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Order Product -lists</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+
+                    <tr>
+                        <th>order Number</th>
+                        <th>User</th>
+                        <th>Phone number</th>
+                        <th>Email</th>
+                        <th>Product price</th>
+                        <th>Payment ID</th>
+                        <th>status</th>
+                    </tr>
+                </thead>
+
+                {% comment %} <tfoot>
+                    <tr>
+                        <th>order number</th>
+                        <th>name</th>
+                        <th>Phoen</th>
+                        <th>Email</th>
+                        <th>Product price</th>
+                        <th>Payment ID</th>
+                    </tr>
+                </tfoot> {% endcomment %}
+
+                <tbody>
+
+                    {% if order_products %}
+                        {% for order_prodcut in products %}
+                            <tr>
+                                <td>{{order_prodcut.order_number}}</td>
+                                <td>{{order_prodcut.first_name}}</td>
+                                <td>{{order_prodcut.phone}}</td>
+                                <td>{{order_prodcut.email}}</td>
+                                <td>₹ {{order_prodcut.order_total}}</td>
+                                <td>{{order_prodcut.payment}}</td>
+                                <td>{{order_prodcut.status}}</td>
+                                <td class="text-center">
+                                    <a href="{% url 'order_accepted' order_prodcut.id %}" class="btn btn-warning">Accept order</a>
+                                    <a href="{% url 'order_cancelled' order_prodcut.id %}" class="btn btn-danger">Cancel order</a>
+
+                                </td>
+
+
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- /.container-fluid -->
+</div>
+<!-- /.main end -->
+
+
+{% endblock content %}

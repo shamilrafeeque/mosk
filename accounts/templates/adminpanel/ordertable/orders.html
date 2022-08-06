@@ -1,0 +1,99 @@
+{% extends 'adminpanel/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6">
+    <!-- Page Heading -->
+            <h1 class="h3 mb-2 text-gray-800">Order Table</h1>
+            <p class="mb-4">Orders and its details</p>
+        </div>
+    <div class="col-lg-6 mt-5 text-right">
+    <form action={% url 'ordersearch' %} method='GET'
+    class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" "style="background: #f8f9fa;">
+    <div class="input-group">
+        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+            aria-label="Search" name="keywords" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="submit">
+                <i class="fa fa-search fa-sm"></i>
+            </button>
+        </div>
+    </div>
+</form>
+</div>
+</div>
+   {% comment %} <!-- Page Heading -->
+   <h1 class="h3 mb-2 text-gray-800">Order Table</h1>
+   <p class="mb-4">Orders and its details</p> {% endcomment %}
+   
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Order Product -lists</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+
+                    <tr>
+                        <th>order Number</th>
+                        <th>User</th>
+                        <th>Phone number</th>
+                        <th>Email</th>
+                        <th>Product price</th>
+                        <th>Payment ID</th>
+                        <th>status</th>
+                    </tr>
+                </thead>
+
+                {% comment %} <tfoot>
+                    <tr>
+                        <th>order number</th>
+                        <th>name</th>
+                        <th>Phoen</th>
+                        <th>Email</th>
+                        <th>Product price</th>
+                        <th>Payment ID</th>
+                    </tr>
+                </tfoot> {% endcomment %}
+
+                <tbody>
+
+                    {% if order_products %}
+                        {% for order_prodcut in orders %}
+                            <tr>
+                                <td>{{order_prodcut.order_number}}</td>
+                                <td>{{order_prodcut.first_name}}</td>
+                                <td>{{order_prodcut.phone}}</td>
+                                <td>{{order_prodcut.email}}</td>
+                                <td>₹ {{order_prodcut.order_total}}</td>
+                                <td>{{order_prodcut.payment}}</td>
+                                <td>{{order_prodcut.status}}</td>
+                                <td class="text-center">
+                                    <a href="{% url 'order_accepted' order_prodcut.id %}" class="btn btn-warning">Accept order</a>
+                                    <a href="{% url 'order_cancelled' order_prodcut.id %}" class="btn btn-danger">Cancel order</a>
+
+                                </td>
+
+
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- /.container-fluid -->
+</div>
+<!-- /.main end -->
+
+
+{% endblock content %}

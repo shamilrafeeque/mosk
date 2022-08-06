@@ -1,0 +1,168 @@
+{% load static %}
+    <!-- END nav -->
+{% include 'accounts/header.html'  %}
+
+<div class="hero-wrap hero-bread" style="background-image: url('/static/images/bg_6.jpg');">
+    <div class="container">'
+    <div class="row no-gutters slider-text align-items-center justify-content-center">
+        <div class="col-md-9 ftco-animate text-center">
+        <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span></span></p>
+        <h1 class="mb-0 bread">My Wishlsit</h1>
+        </div>
+    </div>
+    </div>
+</div>
+
+    <section class="ftco-section ftco-cart">
+			<div class="container">
+			{% if not wishlist_items %}
+				<h2 class="text-center">Your Wishlist Is Empty</h2>
+				<br>
+				<div class="text-center">
+					<a href="{% url 'store' %}" class="btn btn-danger text-primary">Continue shopping</a>
+				</div>
+			{% else %}
+				<div class="row">
+
+    			<div class="col-md-12 ftco-animate">
+    				<div class="cart-list">
+	    				<table class="table">
+						    <thead class="thead-primary">
+						      <tr class="text-center">
+						        <th>Product</th>
+						        <th>description</th>
+						        <th>prize</th>
+						        <th>&nbsp;</th>
+						        <th>&nbsp;</th>
+						        <th>&nbsp;</th>
+						      </tr>
+						    </thead>
+						    <tbody>
+                               {% for cart_item in wishlist_items %}
+						       <tr class="text-center">
+						        	<td class="product-remove"><a href="{% url 'remove_wishlist_item' cart_item.product.id cart_item.id %}" onclick="return confirm('Are you want to delete')"><span class="ion-ios-close"></span></a></td>
+						         
+						        	<td class="image-prod"><div class="img" style="background-image:url('{{ cart_item.product.images.url }}');"></div></td>
+						        
+						        	<td class="product-name">
+										<a class='btn btn-link'  href="{{ cart_item.product.get_url}}"><h3>{{ cart_item.product.product_name }}</h3></a>
+										<p class="text-muted small">
+										{% comment %} {% if cart_item.variations.all%}
+											{% for item in cart_item.variations.all %}
+												{{item.variation_category |capfirst}}:{{item.variation_value |capfirst}}<br>
+											{% endfor %}
+
+										{% endif %}{% endcomment %}
+										</p> 
+						        		<p>{{ cart_item.product.description }}</p>
+						        	</td>
+						        
+						        	<td class="price">₹{{cart_item.product.price}}</td>
+						        	<td>
+									
+							
+										{% comment %} <div class="col">
+										<!--<td class="quantity">
+											<div class="input-group mb-3">-->
+											<div class="input-group input-spinner">
+												<div class="input-group-prepend">
+													<a href ="{% url 'remove_cart' cart_item.product.id cart_item.id%}"><button class="btn btn-light" type="submit" id="button class"><i class ="fa fa-minus"></i></button></a>
+												</div>
+												<label for="" name="quantity" class="form-control">{{ cart_item.quantity }}</label>
+												<div class="input-group-append">
+													 <form action="{% url 'add_cart' cart_item.product.id %}" method="POST">
+														{% csrf_token %}
+														{% for item in cart_item.variations.all%}
+															<input type="hidden" name="{{item.variation_category |lower}}" value="{{item.variation_value | capfirst}}">
+														{% endfor %}
+													<button class="btn btn-light" type="submit" id="button class"><i class ="fa fa-plus"></i></button>
+													</form> 
+												</div>								
+											</div>
+											</div>  {% endcomment %}
+									</td>
+										
+										<td class="total">{{ cart_item.sub_total }}</td>
+									</tr><!-- END TR-->
+							  {% endfor %}
+						      
+						    </tbody>
+						  </table>
+					  </div>
+    			</div>
+    		</div>
+    		{% comment %} <div class="row justify-content-start">
+    			<div class="col col-lg-5 col-md-6 mt-5 cart-wrap ftco-animate">
+    				<div class="cart-total mb-3">
+    					<h3>Cart Totals</h3>
+    					<p class="d-flex">
+    						<span>Subtotal</span>
+    						<span>$20.60</span>
+    					</p>
+    					<p class="d-flex">
+    						<span>Delivery</span>+
+
+							
+    						<span>$0.00</span>
+    					</p>
+    					<p class="d-flex">
+    						<span>Discount</span>
+    						<span>$3.00</span>
+    					</p>
+    					<hr>
+    					<p class="d-flex total-price">
+    						<span>Total</span>
+    						<span>₹{{total}}</span>
+    					</p>
+    				</div>
+    				<p class="text-center"><a href="{% url 'checkout' %}" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
+    			</div>
+    		</div> {% endcomment %}
+			</div>
+		{% endif %}
+		</section>
+{% include 'accounts/footer.html'  %}
+  
+
+  <!-- loader -->
+{% include 'accounts/loader.html'  %}
+
+  <script>
+		$(document).ready(function(){
+
+		var quantitiy=0;
+		   $('.quantity-right-plus').click(function(e){
+		        
+		        // Stop acting like a button
+		        e.preventDefault();
+		        // Get the field name
+		        var quantity = parseInt($('#quantity').val());
+		        
+		        // If is not undefined
+		            
+		            $('#quantity').val(quantity + 1);
+
+		          
+		            // Increment
+		        
+		    });
+
+		     $('.quantity-left-minus').click(function(e){
+		        // Stop acting like a button
+		        e.preventDefault();
+		        // Get the field name
+		        var quantity = parseInt($('#quantity').val());
+		        
+		        // If is not undefined
+		      
+		            // Increment
+		            if(quantity>0){
+		            $('#quantity').val(quantity - 1);
+		            }
+		    });
+		    
+		});
+		
+	</script>
+    
+  

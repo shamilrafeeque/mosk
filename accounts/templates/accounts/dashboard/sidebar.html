@@ -1,0 +1,14 @@
+<aside class="col-md-3">
+    <!--   SIDEBAR   -->
+    <ul class="list-group">
+        <a class="list-group-item" href="{% url 'profile' %}"> Dashboard</a>
+        <a class="list-group-item" href="{% url 'my_orders' %}"> My Orders </a>
+        <a class="list-group-item" href="{% url 'edit_profile' %}">Edit profile </a>
+        <a class="list-group-item" href="{% url 'change_password' %}">Change password</a>
+        {% comment %} <a class="list-group-item" href="#"> My Selling Items </a>
+        <a class="list-group-item" href="#"> Received orders </a> {% endcomment %}
+    </ul>
+    <br>
+    <a class="btn btn-light btn-block" href="#"> <i class="fa fa-power-off"></i> <span class="text">Log out</span> </a> 
+    <!--   SIDEBAR .//END   -->
+</aside>

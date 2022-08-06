@@ -1,0 +1,281 @@
+{% include 'accounts/header.html'%}
+{% load static %}
+        <!-- END nav -->
+    
+        <!-- <div class="hero-wrap hero-bread" style="background-image: url('/static/images/bg_6.jpg');">
+          <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+              <div class="col-md-9 ftco-animate text-center">
+                  <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Checkout</span></p>
+                <h1 class="mb-0 bread">Checkout</h1>
+              </div>
+            </div>
+          </div>
+        </div>!--> 
+    
+<section class="ftco-section">
+  <div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-sm-12 ftco-animate">
+          <form action="{% url 'palce_order' %}" method="POST" class="billing-form">
+              {% csrf_token %}
+                      <h3 class="mb-4 billing-heading">Billing Details</h3>
+                      <div class="row align-items-end">
+                          <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="firstname">Firt Name</label>
+                          <input type="text" name="first_name" class="form-control" placeholder="">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="lastname">Last Name</label>
+                          <input type="text" name="last_name" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <div class="w-100"></div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="country">Email</label>
+                                <input type="text" name="email" class="form-control" placeholder="">
+                                {% comment %} <div class="select-wrap">
+                              <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                              <select name="" id="" class="form-control">
+                                  <option value="">France</option>
+                                <option value="">Italy</option>
+                                <option value="">Philippines</option>
+                                <option value="">South Korea</option>
+                                <option value="">Hongkong</option>
+                                <option value="">Japan</option>
+                              </select>
+                            </div> {% endcomment %}
+                            </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                            <label for="streetaddress">Address 1</label>
+                          <input type="text" name="address_line_1" class="form-control" placeholder="House number and street name">
+                        </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="streetaddress">Address 2</label>
+                          <input type="text" name="address_line_2" class="form-control" placeholder="Appartment, suite, unit etc: (optional)">
+                        </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                            <label for="towncity">Phone number</label>
+                          <input type="text"  name="phone" class="form-control" placeholder="">
+                        </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="postcodezip">Country</label>
+                          <input type="text" name="country" class="form-control" placeholder="">
+                        </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="phone">City</label>
+                          <input type="text" name="city" class="form-control" placeholder="">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="emailaddress">State</label>
+                          <input type="text" name="state" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-md-12">
+                        <div class="form-group mt-4">
+                                            <div class="radio">
+                                              <label class="mr-3"><input type="radio" name="optradio"> Create an Account? </label>
+                                              <label><input type="radio" name="optradio"> Ship to different address</label>
+                                            </div>
+                                        </div>
+                    </div>
+                    </div>
+                  <!-- END -->
+                </div>
+                   <div class="col-lg-6 d-flex">
+                        <div class="col-lg-12">
+                            <table class="tables">
+                                <thead class="thead-primary">
+                                  <tr class="text-center">
+                                    <th>&nbsp;</th>
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                    <!--<th>Price</th>-->
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                  </tr>
+                                </thead> 
+                                 <tbody>
+                                  {% for cart_item in cart_items %}
+                                  <tr class="text-center">
+                                    
+                                   
+                                    <td class="image-prod"><div class="img" style="background-image:url('{{ cart_item.product.images.url }}');"></div></td>
+                                    
+                                    <td class="product-name">
+                                        <a class='btn btn-link'  href="{{ cart_item.product.get_url}}"><h3>{{ cart_item.product.product_name }}</h3></a>
+                                        <p class="text-muted small">
+                                        {% if cart_item.variations.all%}
+                                          {% for item in cart_item.variations.all %}
+                                            {{item.variation_category |capfirst}}:{{item.variation_value |capfirst}}<br>
+                                          {% endfor %}
+
+                                        {% endif %}
+                                      </p>
+                                        <!--<p>{{ cart_item.product.description }}</p>-->
+                                    </td>
+                                    
+                                    <td class="price">₹{{cart_item.product.price}}</td>
+                                    <td>
+                                        
+                                
+                                    <div class="col">
+                                    <!--<td class="quantity">
+                                        <div class="input-group mb-3">-->
+                                          <div class="input-group input-spinner">
+                                            
+                                           <label for="">{{ cart_item.quantity }}</label>
+                                            						
+                                          </div>
+                                          </div>
+                                  </td>
+                                    
+                                    <td class="total">₹{{ cart_item.sub_total }}</td>
+                                  </tr><!-- END TR-->
+                                  {% endfor %}
+                                  
+                                </tbody>
+                              </table>
+                          </div>
+                    </div>
+                </div> 
+
+                    
+               
+                  
+                    <div class="col-md-6 d-flex">
+                          <div class="cart-detail cart-total bg-light p-3 p-md-4">
+                              <h3 class="billing-heading mb-4">Cart Total</h3>
+                              <p class="d-flex">
+                                        <span>Subtotal</span>
+                                        <span>$20.60</span>
+                                    </p>
+                                    <p class="d-flex">
+                                        <span>Delivery</span>
+                                        <span>$0.00</span>
+                                    </p>
+                                    <p class="d-flex">
+                                        <span>Discount</span>
+                                        <span>$3.00</span>
+                                    </p>
+                                    <hr>
+                                    <p class="d-flex total-price">
+                                        <span>Total</span>
+                                        <span>${{ total }}</span>
+                                    </p>
+                                    </div>
+                    
+                     <!-- <div class="col-md-3">-->
+                          <div class="cart-detail bg-light p-3 p-md-6">
+                              <h3 class="billing-heading mb-4">Payment Method</h3>
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <div class="radio">
+                                                   <label><input type="radio" name="optradio" class="mr-2"> Direct Bank Tranfer</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <div class="radio">
+                                                   <label><input type="radio" name="optradio" class="mr-2"> Check Payment</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <div class="radio">
+                                                   <label><input type="radio" name="optradio" class="mr-2"> Paypal</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <div class="checkbox">
+                                                   <label><input type="checkbox" value="" class="mr-2"> I have read and accept the terms and conditions</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                      <button type="submit" name="submit" class="btn btn-primary py-3 px-4">Place an order</button>
+                                    
+                                    </div>
+                                </div > 
+                             
+                    </div>
+                  </div>
+              </div> <!-- .col-md-8 -->
+            </div>
+            </div>
+            </form>
+            </div><!--row div-->
+          </div>
+        
+        </section> <!-- .section -->
+            
+{% include 'accounts/footer.html' %}
+        
+      
+    
+      <!-- loader -->
+{% include 'accounts/loader.html' %}
+    
+      <script>
+            $(document).ready(function(){
+    
+            var quantitiy=0;
+               $('.quantity-right-plus').click(function(e){
+                    
+                    // Stop acting like a button
+                    e.preventDefault();
+                    // Get the field name
+                    var quantity = parseInt($('#quantity').val());
+                    
+                    // If is not undefined
+                        
+                        $('#quantity').val(quantity + 1);
+    
+                      
+                        // Increment
+                    
+                });
+    
+                 $('.quantity-left-minus').click(function(e){
+                    // Stop acting like a button
+                    e.preventDefault();
+                    // Get the field name
+                    var quantity = parseInt($('#quantity').val());
+                    
+                    // If is not undefined
+                  
+                        // Increment
+                        if(quantity>0){
+                        $('#quantity').val(quantity - 1);
+                        }
+                });
+                
+            });
+        </script>
+        
+      </body>
+    </html>
