@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-&3(#y@v(_%dw@&x#hfr@a6_hcwsm&*a6inmg2$5li(e5)2v+hz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'orders',
     'adminpanel',
     'wishlists',
+    'storages'
 
    
 ]
@@ -90,11 +91,11 @@ AUTH_USER_MODEL='accounts.Account'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mosk',
+        'NAME': 'moskcart',
         'USER': 'postgres',
-        'PASSWORD': 'psqlpass',
-        'HOST': 'localhost',
-        'PORT': '',
+        'PASSWORD': 'Awspass123',
+        'HOST': 'database-1.cibk8czmxtjh.ap-south-1.rds.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
@@ -142,7 +143,8 @@ STATICFILES_DIRS=[
 MEDIA_URL='/media/'
 MEDIA_ROOT=BASE_DIR /'media'
 
-
+MEDIA_ROOT=os.path.join(BASE_DIR,'/media')
+STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -160,3 +162,13 @@ EMAIL_HOST_USER='shamilrafeeque04@gmail.com'
 EMAIL_HOST_PASSWORD='vefh yngw olmt syzt'
 EMAIL_USE_TLS=True
 
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_QUERYSTRING_AUTH=False
+AWS_S3_FILE_OVERWRITE=False
+
+
+
+AWS_ACCESS_KEY_ID='AKIAY76LXRIUG5SXLZIM'
+AWS_SECRET_ACCESS_KEY='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'
+AWS_STORAGE_BUCKET_NAME='moskcart'
