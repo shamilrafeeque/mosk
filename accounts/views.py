@@ -31,7 +31,7 @@ def index(request):
     context={
         'product':products,
     }
-    return render(request,'accounts\index.html',context)
+    return render(request,'accounts/index.html',context)
 
 
 def user_registeration(request):
