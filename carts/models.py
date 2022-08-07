@@ -1,4 +1,4 @@
-from pyexpat import model
+# from pyexpat import model
 from django.db import models
 #from mosk.accounts.models import Account
 from accounts.models import Account

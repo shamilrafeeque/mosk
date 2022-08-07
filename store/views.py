@@ -1,9 +1,4 @@
 
-
-from itertools import product
-from multiprocessing import context
-
-from django.http import HttpResponse
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render
 from carts.models import CartItem

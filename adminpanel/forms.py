@@ -1,6 +1,6 @@
 from django import forms
 from category.models import Category
-from store.models import Product,ProductGallery
+from store.models import Product
 from store.models import Variation
 
 class CategoryForm(forms.ModelForm):

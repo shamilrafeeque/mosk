@@ -1,4 +1,4 @@
-from unicodedata import category
+# from unicodedata import category
 
 
 from .models import Category

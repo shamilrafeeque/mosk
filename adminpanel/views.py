@@ -1,4 +1,4 @@
-from multiprocessing import context
+# from multiprocessing import context
 from unicodedata import category
 from django.contrib import messages
 from django.shortcuts import redirect, render
@@ -9,9 +9,9 @@ from orders.models import Order,OrderProduct,Payment
 from store.models import Product,Variation,ProductGallery
 from .forms import CategoryForm,ProductForm,VariationForm
 from django.template.defaultfilters import slugify
-from django.db.models.functions import TruncMonth,TruncMinute,TruncDay
+from django.db.models.functions import TruncMinute
 import datetime
-from django.db.models import Sum,Count
+from django.db.models import Sum
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 # Create your views here.

@@ -1,6 +1,6 @@
 
-from email import message
-from django.http import HttpRequest
+# from email import message
+# from django.http import HttpRequest
 from django.shortcuts import get_object_or_404,redirect, render
 from orders.models import OrderProduct
 from orders.models import Order
@@ -9,7 +9,7 @@ from orders.models import Order
 
 from .models import Account
 from django.contrib import messages,auth
-from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from .forms import RegistrationForm,UserProfileForm,UserForm
 from django.contrib.sites.shortcuts import get_current_site

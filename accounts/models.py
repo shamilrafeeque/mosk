@@ -1,5 +1,5 @@
 
-from distutils.command.upload import upload
+# from distutils.command.upload import upload
 from pickle import TRUE
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser,BaseUserManager

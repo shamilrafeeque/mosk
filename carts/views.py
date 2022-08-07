@@ -1,12 +1,12 @@
-from genericpath import exists
-from itertools import product
-from django.http import HttpResponse
+# from genericpath import exists
+# from itertools import product
+# from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 #from mosk.store.models import Variation
 #from mosk.carts.models import CartItem
 from store .models import Product,Variation
 from .models import Cart,CartItem
-from django.http import HttpResponse
+# from django.http import HttpResponse
 #from mosk.store.models import Product
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist

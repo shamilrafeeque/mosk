@@ -1,4 +1,4 @@
-from itertools import product
+# from itertools import product
 from django.contrib import admin
 from .models import Payment,Order,OrderProduct
 
