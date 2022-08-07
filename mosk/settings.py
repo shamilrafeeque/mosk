@@ -135,8 +135,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'mosk/static/'
-STATIC_ROOT = BASE_DIR /'mosk/static'
+STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR /'static'
 STATICFILES_DIRS=[
     'mosk/static'
 ]
@@ -201,7 +201,7 @@ DEFAULT_FILE_STORAGE='mosk.storage_backends.MediaStorage'
 #     'static', 
 # ] 
 STATIC_URL='http://%s/%s/'%(AWS_S3_CUSTOM_DOMAIN,AWS_LOCATION) 
-
+AWS_DEFAULT_ACL = None
 
 
 # from storages.backends.s3boto3 import S3Boto3Storage 
