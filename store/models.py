@@ -2,7 +2,7 @@ from distutils.command.upload import upload
 from email.policy import default
 from random import choices
 from tabnanny import verbose
-from tkinter import CASCADE
+
 from django.urls import reverse
 from django.db import models
 from django.forms import BooleanField, IntegerField
