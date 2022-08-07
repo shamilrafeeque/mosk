@@ -134,17 +134,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-# STATIC_URL = 'static/'
-# STATICFILES_DIRS=[
-#     BASE_DIR /'static'
-# ]
+STATIC_URL = 'static/'
+STATICFILES_DIRS=[
+    BASE_DIR /'static'
+]
 # #media file configuration
 
 # MEDIA_URL='/media/'
 # MEDIA_ROOT=BASE_DIR /'media'
 
 # MEDIA_ROOT=os.path.join(BASE_DIR,'/media')
-# STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
+STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -163,6 +163,7 @@ EMAIL_HOST_PASSWORD='vefh yngw olmt syzt'
 EMAIL_USE_TLS=True
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE='storages.backends.s3boto3.S3Boto3Storage' 
 
 AWS_QUERYSTRING_AUTH=False
 AWS_S3_FILE_OVERWRITE=False
@@ -174,25 +175,28 @@ AWS_SECRET_ACCESS_KEY='BNVoeJQmWQlfhh7kPcuseVds6sWnGbnkqbPmp63f'
 AWS_STORAGE_BUCKET_NAME='moskcart'
 
 
-AWS_STORAGE_BUCKET_NAME=config('AWS_STORAGE_BUCKET_NAME') 
-AWS_QUERYSTRING_AUTH=False 
+# AWS_STORAGE_BUCKET_NAME=('moskcart') 
+# AWS_QUERYSTRING_AUTH=False 
 
-AWS_S3_CUSTOM_DOMAIN='%s.s3.amazonaws.com'%AWS_STORAGE_BUCKET_NAME 
-AWS_S3_OBJECT_PARAMETERS={ 
-'CacheControl':'max-age=86400', 
-} 
-AWS_S3_FILE_OVERWRITE=True 
-AWS_DEFAULT_ACL='public-read' 
-AWS_LOCATION='static' 
-DEFAULT_FILE_STORAGE='storages.backends.s3boto3.S3Boto3Storage' 
-STATICFILES_DIRS=[ 
-'static', 
-] 
-STATIC_URL='http://%s/%s/'%(AWS_S3_CUSTOM_DOMAIN,AWS_LOCATION) 
-STATICFILES_STORAGE='storages.backends.s3boto3.S3Boto3Storage' 
+# AWS_S3_CUSTOM_DOMAIN='%s.s3.amazonaws.com''% moskcart'
+# AWS_S3_OBJECT_PARAMETERS={ 
+# 'CacheControl':'max-age=86400', 
+# } 
+# AWS_S3_FILE_OVERWRITE=True 
+# AWS_DEFAULT_ACL='public-read' 
+# AWS_LOCATION='static' 
+# DEFAULT_FILE_STORAGE='storages.backends.s3boto3.S3Boto3Storage' 
+# STATICFILES_DIRS=[ 
+#     'static', 
+# ] 
+# STATIC_URL='http://%s/%s/'%(AWS_S3_CUSTOM_DOMAIN,AWS_LOCATION) 
 
-from storages.backends.s3boto3 import S3Boto3Storage 
 
-class MediaStorage(S3Boto3Storage): 
-    location='media' 
-    file_overwrite=False 
+
+# from storages.backends.s3boto3 import S3Boto3Storage 
+
+# class MediaStorage(S3Boto3Storage): 
+#     location='media' 
+#     file_overwrite=False 
+
+# DEFAULT_FILE_STORAGE='storages.backends.s3boto3.S3Boto3Storage'
