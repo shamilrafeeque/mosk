@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'orders',
     'adminpanel',
     'wishlists',
-    'storages'
+    
 
    
 ]
