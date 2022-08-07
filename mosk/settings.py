@@ -135,10 +135,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR /'static'
+STATIC_URL = 'mosk/static/'
+STATIC_ROOT = BASE_DIR /'mosk/static'
 STATICFILES_DIRS=[
-    'static'
+    'mosk/static'
 ]
 # #media file configuration
 
