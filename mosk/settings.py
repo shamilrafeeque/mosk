@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,10 +22,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&3(#y@v(_%dw@&x#hfr@a6_hcwsm&*a6inmg2$5li(e5)2v+hz'
-
+SECRET_KEY =config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG ',default=True,cast=bool)
 
 ALLOWED_HOSTS = ['*']
 
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'orders',
     'adminpanel',
     'wishlists',
+    'storages',
     
 
    
@@ -90,12 +91,12 @@ AUTH_USER_MODEL='accounts.Account'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'moskcart',
-        'USER': 'postgres',
-        'PASSWORD': 'Awspass123',
-        'HOST': 'database-1.cibk8czmxtjh.ap-south-1.rds.amazonaws.com',
-        'PORT': '5432',
+        'ENGINE': config('ENGINE'),
+        'NAME': config('NAME'),
+        'USER': config('USER'),
+        'PASSWORD': config('PASSWORD'),
+        'HOST': config('HOST',default='localhost'),
+        'PORT':config('PORT',cast=int),
     }
 }
 
@@ -135,8 +136,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR /'static'
 STATICFILES_DIRS=[
-    BASE_DIR /'static'
+    'static'
 ]
 # #media file configuration
 
@@ -156,11 +158,12 @@ MESSAGE_TAGS = {
    
 }
 #SMTP cofiguration 
-EMAIL_HOST='smtp.gmail.com'
-EMAIL_PORT=587
-EMAIL_HOST_USER='shamilrafeeque04@gmail.com'
-EMAIL_HOST_PASSWORD='vefh yngw olmt syzt'
-EMAIL_USE_TLS=True
+EMAIL_BACKEND=config('EMAIL_BACKEND')
+EMAIL_HOST=config('EMAIL_HOST')
+EMAIL_PORT=config('EMAIL_PORT',cast=int)
+EMAIL_HOST_USER=config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD=config('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS=config('EMAIL_USE_TLS',cast=bool)
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATICFILES_STORAGE='storages.backends.s3boto3.S3Boto3Storage' 
@@ -170,9 +173,9 @@ AWS_S3_FILE_OVERWRITE=False
 
 
 
-AWS_ACCESS_KEY_ID='AKIAY76LXRIUG5SXLZIM'
-AWS_SECRET_ACCESS_KEY='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'
-AWS_STORAGE_BUCKET_NAME='moskcart'
+AWS_ACCESS_KEY_ID=config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY=config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME=config('AWS_STORAGE_BUCKET_NAME')
 
 
 # AWS_STORAGE_BUCKET_NAME=('moskcart') 
