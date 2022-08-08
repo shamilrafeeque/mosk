@@ -9319,6 +9319,54 @@ h1, h2, h3, h4, h5,
         font-weight: 700; }
     .table tbody tr td.total, .table tbody tr td.price {
       color: #000000; }
+/*cusome made table css in checkout page*/
+.tables {
+min-width: 700px ;
+width: 100%;
+text-align: center; }
+.tables th {
+  font-weight: 500; }
+.tables .thead-primary {
+  background: #dbcc8f; }
+  .tables .thead-primary tr th {
+    padding: 20px 10px;
+    color: #fff !important;
+    border: 1px solid transparent !important; }
+.tables tbody tr td {
+  text-align: center !important;
+  vertical-align: middle;
+  padding: 40px 10px;
+  border: 1px solid transparent !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important; }
+  .tables tbody tr td.product-remove a {
+    background: #dbcc8f;
+    padding: 4px 10px;
+    color: #000000;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    border-radius: 2px; }
+    .tables tbody tr td.product-remove a:hover {
+      border: 1px solid #dbcc8f;
+      background: #dbcc8f; }
+      .tables tbody tr td.product-remove a:hover span {
+        color: #fff; }
+  .tables tbody tr td.quantity {
+    width: 20%; }
+  .tables tbody tr td.image-prod .img {
+    display: block;
+    width: 100px;
+    height: 150px;
+    margin: 0 auto; }
+  .tables tbody tr td.product-name {
+    width: 30%; }
+    .tables tbody tr td.product-name h3 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 700; }
+  .tables tbody tr td.total, .table tbody tr td.price {
+    color: #000000; }
 
 .cart-wrap .btn-primary {
   display: block;
