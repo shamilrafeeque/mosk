@@ -18,8 +18,10 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url="admin_login")
 def adminpanel(request):
     if request.user.is_superadmin:
-        total_revenue = round( Order.objects.filter(is_ordered = True).aggregate(sum = Sum('order_total'))['sum'])
-
+        try:
+            total_revenue = round( Order.objects.filter(is_ordered = True).aggregate(sum = Sum('order_total'))['sum'])
+        except:
+            total_revenue = 0
 
         total_cost= round((total_revenue * .80))
         total_profit = round(total_revenue - total_cost)  
@@ -37,9 +39,9 @@ def adminpanel(request):
             day.append(i['day'].minute)
             revenue.append(int(i['sum']))
 
-        male = Category.objects.get(category_name = 'shoes')
-        female =Category.objects.get(category_name = 'watches')
-        sandals =Category.objects.get(category_name = 'sandals')
+        # male = Category.objects.get(category_name = 'shoes')
+        # female =Category.objects.get(category_name = 'watches')
+        # sandals =Category.objects.get(category_name = 'sandals')
 
         product_count = OrderProduct.objects.all().count()
 
@@ -48,9 +50,9 @@ def adminpanel(request):
             'total_revenue' : total_revenue,
             'total_cost' : total_cost,
             'total_profit' : total_profit,
-            'male' : male,
-            'female' : female,
-            'sandlers' : sandals,
+            # 'male' : male,
+            # 'female' : female,
+            # 'sandlers' : sandals,
 
             'product_count' : product_count,
             'day' : day,
