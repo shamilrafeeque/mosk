@@ -69,7 +69,7 @@ def user_registeration(request):
     context ={
         'form':form,
     }
-    return render(request,'accounts\signup.html',context)  
+    return render(request,'accounts/signup.html',context)  
 
 def user_login(request):
     if request.method=="POST":
@@ -94,7 +94,7 @@ def user_login(request):
         else:
             messages.error(request,'invalid login credentials.')    
             return redirect('login')
-    return render(request,'accounts\login.html')
+    return render(request,'accounts/login.html')
 
      
 def user_logout(request):
