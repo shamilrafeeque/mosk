@@ -11,8 +11,8 @@
 		          	<div class="text">
 		          		<span class="subheading">#New Arrival</span>
 		          		<div class="horizontal">
-				            <h1 class="mb-4 mt-3">Shoes Collection 2019</h1>
-				            <p class="mb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country.</p>
+				            <h1 class="mb-4 mt-3">Shoes Collections 2022</h1>
+				            <p class="mb-4">Customers can purchase items from the comfort of their own homes or workplace..</p>
 				            
 				            <p><a href="#" class="btn-custom">Discover Now</a></p>
 				          </div>
@@ -31,8 +31,8 @@
 		          	<div class="text">
 		          		<span class="subheading">#New Arrival</span>
 		          		<div class="horizontal">
-				            <h1 class="mb-4 mt-3">New Shoes Winter Collection</h1>
-				            <p class="mb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country.</p>
+				            <h1 class="mb-4 mt-3">Shoes Sandals watches Collection</h1>
+				            <p class="mb-4">Customers can purchase items from the comfort of their own homes or workplace..</p>
 				            
 				            <p><a href="{% url 'store' %}" class="btn-custom">Discover Now</a></p>
 				          </div>
@@ -54,7 +54,7 @@
               </div>
               <div class="media-body">
                 <h3 class="heading">Free Shipping</h3>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                <p>We provide Free shipping.Free shipping is an increasingly-popular option for online shopping, where customers do not have to pay an additional shipping charge.</p>
               </div>
             </div>      
           </div>
@@ -65,7 +65,7 @@
               </div>
               <div class="media-body">
                 <h3 class="heading">Support Customer</h3>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                <p>24x7 customer service,24/7 phone support will be available for all retail customers who prefer speaking live.</p>
               </div>
             </div>    
           </div>
@@ -76,7 +76,7 @@
               </div>
               <div class="media-body">
                 <h3 class="heading">Secure Payments</h3>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                <p>A secure payment system,is a type of payment processing that ensures a user's financial and personal information is protected from fraud and unauthorized access.</p>
               </div>
             </div>      
           </div>
@@ -88,8 +88,8 @@
     	<div class="container">
 				<div class="row justify-content-center mb-3 pb-3">
           <div class="col-md-12 heading-section text-center ftco-animate">
-            <h2 class="mb-4">New Shoes Arrival</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+            <h2 class="mb-4">View All Arrivals</h2>
+            <p>all new products shoes,sandals & wathes</p>
           </div>
         </div>   		
     	</div>
@@ -121,8 +121,8 @@
 	    						<p class="price"><span>₹{{product.price}}</span></p>
 	    					</div>
 	    					<p class="bottom-area d-flex px-3">
-    							<a href="{{ product.get_url }}" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
-    							<a href="{{ product.get_url }}" class="buy-now text-center py-2">Add wishlist<span><i class="ion-ios-heart ml-1"></i></span></a>
+    							<a href="{{ product.get_url }}" class="add-to-cart text-center py-2 mr-1"><span>View Details <i class="ion-ios-add ml-1"></i></span></a>
+    							<a href="{% url 'add_wishlist' product.id %}" class="buy-now text-center py-2">Add wishlist<span><i class="ion-ios-heart ml-1"></i></span></a>
     						</p>
     					</div>
     				</div>
@@ -134,7 +134,7 @@
 
 
 
-    <section class="ftco-section ftco-choose ftco-no-pb ftco-no-pt">
+    {% comment %} <section class="ftco-section ftco-choose ftco-no-pb ftco-no-pt">
     	<div class="container">
 				<div class="row no-gutters">
 					<div class="col-lg-4">
@@ -190,9 +190,9 @@
     			</div>
   			</div>
     	</div>
-    </section>
+    </section> {% endcomment %}
 
-    <section class="ftco-section ftco-deal bg-primary">
+    {% comment %} <section class="ftco-section ftco-deal bg-primary">
     	<div class="container">
     		<div class="row">
     			<div class="col-md-6">
@@ -221,9 +221,9 @@
     			</div>
     		</div>
     	</div>
-    </section>
+    </section> {% endcomment %}
 
-    <section class="ftco-section testimony-section">
+    {% comment %} <section class="ftco-section testimony-section">
       <div class="container">
         <div class="row">
         	<div class="col-lg-5">
@@ -346,7 +346,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> {% endcomment %}
 {% include 'accounts/instafooter.html' %}
    
 

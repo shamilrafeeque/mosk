@@ -5,7 +5,7 @@
 html,body{
 /*background-image: url('https://as2.ftcdn.net/v2/jpg/01/67/16/47/1000_F_167164778_WhTPSJiV1aFgTcjSrm1oLoMqnNeZsNBE.jpg');*/
 /* background-image: url('https://images.unsplash.com/photo-1607522370275-f14206abe5d3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2hvZXxlbnwwfHwwfHw%3D&w=1000&q=80'); */
-background-image: url('/mosk/static/images/login-image.jpg')!important;
+background-image: url('/mosk/static/images/loginpage.jpg')!important;
 
 background-color: #42422b;
 background-size: cover;
