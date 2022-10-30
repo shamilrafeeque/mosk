@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Account,UserProfile
+from .models import Account, Carousel,UserProfile
 from django.contrib.auth.admin import UserAdmin
 from django.utils.html import format_html
 
@@ -21,4 +21,4 @@ class UserProfileAdmin(admin.ModelAdmin):
 
 admin.site.register(Account, AccountAdmin)
 admin.site.register(UserProfile, UserProfileAdmin)
-
+admin.site.register(Carousel)

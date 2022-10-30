@@ -10,6 +10,7 @@ from carts.views import _cart_id
 from django.core.paginator import EmptyPage,PageNotAnInteger,Paginator
 from django.contrib import messages
 from .forms import ReviewForm
+
 # Create your views here.
 def store(request,category_slug=None):
     categories=None
@@ -104,3 +105,5 @@ def submit_review(request,product_id):
 
                 # }
                 return redirect (url)
+
+

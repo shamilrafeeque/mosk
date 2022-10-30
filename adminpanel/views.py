@@ -252,13 +252,15 @@ def add_product(request):
             product.slug = slug
 
             product.save()
-            
-            images = request.FILES.getlist('images')
-            for image in images:
-                    ProductGallery.objects.create(
-                        image = image,
-                        product = product,
-                    )
+            try:
+                images = request.FILES.getlist('images')
+                for image in images:
+                        ProductGallery.objects.create(
+                            image = image,
+                            product = product,
+                        )
+            except:
+                pass
             return redirect('storetable',id=1)
     else:
         form = ProductForm()

@@ -1,6 +1,7 @@
 
 
 from pickle import TRUE
+from platform import mac_ver
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
 
@@ -90,3 +91,14 @@ class UserProfile(models.Model):
         return f'{self.aaddress_line1}{self.address_line2}'
 
 
+
+class Carousel(models.Model):
+    # carousel_image1=models.ImageField(upload_to='photos/carousel',null=True)
+    carousel_image=models.ImageField(upload_to='photos/carousel',null=True)
+    # description1=models.CharField(max_length=50,null=True)
+    description=models.CharField(max_length=50,null=True)
+    is_active=models.BooleanField(default=True)
+
+
+    # def __str__(self):
+    #   return self.description1

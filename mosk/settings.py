@@ -89,15 +89,31 @@ AUTH_USER_MODEL='accounts.Account'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': config('ENGINE'),
-        'NAME': config('NAME'),
-        'USER': config('DB_USER'),
-        'PASSWORD': config('PASSWORD'),
-        'HOST': config('HOST',default='localhost'),
-        'PORT':config('PORT',cast=int),
-    }
+   'default': {
+       'ENGINE': 'django.db.backends.postgresql',
+       'NAME': config('NAME'),
+       'USER': config('DB_USER'),
+       'PASSWORD': config('PASSWORD'),
+       'HOST': 'localhost',
+       'PORT': '',
+   }
 }
+
+
+
+
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': config('ENGINE'),
+#         'NAME': config('NAME'),
+#         'USER': config('DB_USER'),
+#         'PASSWORD': config('PASSWORD'),
+#         'HOST': config('HOST',default='localhost'),
+#         'PORT':config('PORT',cast=int),
+#     }
+# }
 
 
 # Password validation

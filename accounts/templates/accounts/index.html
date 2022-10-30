@@ -2,17 +2,18 @@
 {% include 'accounts/header.html'  %}
     <section id="home-section" class="hero">
 		  <div class="home-slider owl-carousel">
+			{% for carousel in carousels %}
 	      <div class="slider-item js-fullheight">
 	      	<div class="overlay"></div>
 	        <div class="container-fluid p-0">
 	          <div class="row d-md-flex no-gutters slider-text align-items-center justify-content-end" data-scrollax-parent="true">
-	          	<img class="one-third order-md-last img-fluid" src="{% static 'images/bg_1.png' %}" alt="">
+	          	<img class="one-third order-md-last img-fluid" src="{{carousel.carousel_image.url}}" alt="">
 		          <div class="one-forth d-flex align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
 		          	<div class="text">
-		          		<span class="subheading">#New Arrival</span>
+		          		<span class="subheading">#New Arrivallllll</span>
 		          		<div class="horizontal">
 				            <h1 class="mb-4 mt-3">Shoes Collections 2022</h1>
-				            <p class="mb-4">Customers can purchase items from the comfort of their own homes or workplace..</p>
+				            <p class="mb-4">{{carousel.description}}</p>
 				            
 				            <p><a href="#" class="btn-custom">Discover Now</a></p>
 				          </div>
@@ -21,8 +22,9 @@
 	        	</div>
 	        </div>
 	      </div>
+		  {% endfor %}
 
-	      <div class="slider-item js-fullheight">
+	      {% comment %} <div class="slider-item js-fullheight">
 	      	<div class="overlay"></div>
 	        <div class="container-fluid p-0">
 	          <div class="row d-flex no-gutters slider-text align-items-center justify-content-end" data-scrollax-parent="true">
@@ -40,7 +42,7 @@
 		          </div>
 	        	</div>
 	        </div>
-	      </div>
+	      </div> {% endcomment %}
 	    </div>
     </section>
 

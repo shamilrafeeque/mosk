@@ -1,6 +1,7 @@
 
 # from email import message
 # from django.http import HttpRequest
+from multiprocessing import context
 from django.shortcuts import get_object_or_404,redirect, render
 from orders.models import OrderProduct
 from orders.models import Order
@@ -23,13 +24,17 @@ from carts.views import _cart_id
 from carts.models import Cart,CartItem
 from .models import UserProfile
 from .forms import UserProfileForm,UserForm
+from .models import Carousel
 # Create your views here.
 
 def index(request):
     products=Product.objects.all().filter(is_available=True)
+    carousel=Carousel.objects.filter(is_active = True)
+
 
     context={
         'product':products,
+        'carousels':carousel,
     }
     return render(request,'accounts/index.html',context)
 
@@ -265,3 +270,12 @@ def resetPassword(request):
             return redirect('resetPassword')
     else:
         return render(request,'accounts/resetPassword.html')
+
+
+def carousel(request):
+    carousel=Carousel.objects.all(is_active = True)
+    print(carousel)
+    context={
+        'carousels':carousel,
+    }
+    return render(request,'accounts/index.html',context)
